@@ -1,0 +1,18 @@
+#
+# Configureds the KIE-Server properties.
+#
+# @author: ddoyle@redhat.com
+#
+batch
+/system-property=org.kie.server.user:add(value="kieserver")
+/system-property=org.kie.server.pwd:add(value="kieserver1!")
+/system-property=org.kie.server.location:add(value="http://localhost:8080/kie-server/services/rest/server")
+/system-property=org.kie.server.controller:add(value="http://localhost:8080/business-central/rest/controller")
+/system-property=org.kie.server.controller.user:add(value="kieserver")
+/system-property=org.kie.server.controller.pwd:add(value="kieserver1!")
+/system-property=org.kie.server.persistence.ds:add(value="java:jboss/datasources/KieServerDS")
+/system-property=org.kie.server.persistence.dialect:add(value="org.hibernate.dialect.PostgreSQLDialect")
+#/system-property=org.kie.server.persistence.tm:add(value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform");
+/system-property=org.kie.server.id:add(value="cc-application-kie-server")
+run-batch
+

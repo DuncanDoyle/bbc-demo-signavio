@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" ng-app="creditCardApplicationApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Signavio / Red Hat Credit Card Application</title>
+    <!--
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    -->
+    <!-- Latest compiled and minified CSS -->
+    <!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- PatternFly Styles -->
+    <link href="bower_components/patternfly/dist/css/patternfly.min.css" rel="stylesheet" media="screen, print">
+    <link href="bower_components/patternfly/dist/css/patternfly-additions.min.css" rel="stylesheet" media="screen, print">
+
+    <!--
+    <link rel="stylesheet" href="css/jumbotron.css" />
+    -->
+    <!-- Embed the Jumbotron stylesheet. -->
+    <style type="text/css">
+        .jumbotron {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+    </style>
+
+    <style type="text/css">
+        .list-group-item-right {
+            float: right
+        }
+    </style>
+    <style type="text/xss">
+        .svg-container { display: inline-block; position: relative; width: 100%; padding-bottom: 100%; vertical-align: middle; overflow: hidden; }
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+                <a class="navbar-brand" href="#/">Signavio / Red Hat Credit Card Application Demo</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#/">Home</a></li>
+                            <li><a ng-href="#/processInstances">Process Instances</a></li>
+                            <li><a ng-href="#/bpmsuite">Red Hat JBoss BPM Suite</a></li>
+                            <li><a href="#/datavirtualization">Red Hat JBoss Data Virtualization</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Support</li>
+                            <li><a href="mailto:jboss-evangelists@redhat.com">Contact</a></li>
+                            <li><a href="https://gitlab.consulting.redhat.com/ddoyle/one-stop">Source Code</a></li>
+                            <li><a href="https://gitlab.consulting.redhat.com/ddoyle/one-stop/issues">Issues</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- AngularJS View-Container for the various views. -->
+    <div class="ng-view"></div>
+
+
+    <hr>
+    <footer>
+        <p>&copy; 2016 Red Hat, Inc.</p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- TODO: Should we use our bower_components? -->
+    <!--  ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')
+    </script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+
+    <!-- PatternFly -->
+    <script src="bower_components/patternfly/dist/js/patternfly.min.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+-->
+
+    <!-- Application Config and Controllers -->
+    <script src="scripts/config.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/apply.js"></script>
+    <script src="scripts/controllers/processInstances.js"></script>
+
+    <!--
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/bpmsuite.js"></script>
+-->
+
+</body>
+
+
+</html>

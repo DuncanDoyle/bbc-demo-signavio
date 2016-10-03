@@ -1,0 +1,20 @@
+{
+  "name": "credit-card-application-app",
+  "description": "",
+  "main": "",
+  "license": "ALv2",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "angularjs#^1.5.8",
+    "angular-route": "^1.5.8",
+    "patternfly": "^3.11.0"
+  }
+}

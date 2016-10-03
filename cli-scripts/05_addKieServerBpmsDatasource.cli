@@ -1,0 +1,8 @@
+# jBPM6 / BPMSuite 6.0.2 datasource
+batch
+/subsystem=datasources/xa-data-source=KieServerDS:add(jndi-name=java:jboss/datasources/KieServerDS, driver-name=postgresql, user-name=postgres, password=postgres)
+/subsystem=datasources/xa-data-source=KieServerDS/xa-datasource-properties=ServerName:add(value=localhost)
+/subsystem=datasources/xa-data-source=KieServerDS/xa-datasource-properties=PortNumber:add(value=5432)
+/subsystem=datasources/xa-data-source=KieServerDS/xa-datasource-properties=DatabaseName:add(value=kieserver-bbc)
+/subsystem=datasources/xa-data-source=KieServerDS:enable(persistent=true)
+run-batch
