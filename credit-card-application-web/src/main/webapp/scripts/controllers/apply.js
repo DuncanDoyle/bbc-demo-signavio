@@ -19,10 +19,20 @@ angular.module('creditCardApplicationApp')
             //JSON representation of the request. CreditCard type still needs to be bound to the model.
             var applicationVar = {
                 name : application.name,
-                dateOfBirth : application.dateOfBirth,
+                //dateOfBirth : application.dateOfBirth,
                 ssn : application.ssn,
-                income : application.income,
-                comment : application.comment
+                //income : application.income,
+                //comment : application.comment,
+                input : {
+                  fICO: 1.0,
+                  bankruptcies: "false",
+                  medical: 1.0,
+                  defaults: "true",
+                  rentOrMortgage: 600,
+                  income: 70000,
+                  settlement: "false",
+                  consumerDebt: 10000
+                }
             };
 
             //$http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;

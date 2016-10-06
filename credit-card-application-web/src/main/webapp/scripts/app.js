@@ -19,6 +19,16 @@ app.config(function($routeProvider) {
                     controller: 'applyCtrl',
                     controllerAs: 'apply'
                 })
+                .when('/humanTasks', {
+                    templateUrl: 'views/humanTasks.html',
+                    controller: 'humanTasksCtrl',
+                    controllerAs: 'humanTasks'
+                })
+                .when('/task', {
+                    templateUrl: 'views/task.html',
+                    controller: 'taskCtrl',
+                    controllerAs: 'task'
+                })
                 .when('/reviewSilverCard', {
                     templateUrl: 'views/reviewSilverCard.html',
                     // controller: 'reviewSilverCardCtrl',
@@ -45,7 +55,8 @@ app.config(function($routeProvider) {
         .service('sharedStateService', function() {
             var selectedCard;
             var currentProcessInstance;
-
+            var currentTask;
+            
             return {
                 getSelectedCard: function() {
                     return selectedCard;
@@ -58,6 +69,12 @@ app.config(function($routeProvider) {
                 },
                 setCurrentProcessInstance: function(value) {
                     currentProcessInstance = value;
+                },
+                getCurrentTask: function () {
+                    return currentTask;
+                },
+                setCurrentTask: function (id) {
+                    currentTask = id;
                 }
             };
         })

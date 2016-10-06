@@ -12,5 +12,5 @@ var ENV = {
     'kieserver_host' : '127.0.0.1',
     'kieserver_port' : '8080',
     'kieserver_containerId' : 'cc_application_container',
-    'kieserver_processId' : 'cc-application-process'
+    'kieserver_processId' : 'creditprocess'
 };

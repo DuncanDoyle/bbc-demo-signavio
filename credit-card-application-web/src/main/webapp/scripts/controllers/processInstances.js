@@ -92,7 +92,7 @@ angular.module('creditCardApplicationApp')
                 .error(function(error) {
                     $scope.data.error = {};
                     $scope.data.error.code = 'abort';
-                    $scope.data.error.message = 'Error when aborting process instance ' + id + '.';
+                    $scope.data.error.message = 'Error when retrieving process instance image for process instance: ' + id + '.';
                 });
 
         };
