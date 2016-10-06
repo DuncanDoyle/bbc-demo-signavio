@@ -12,6 +12,7 @@ batch
 /system-property=org.kie.server.controller.pwd:add(value="kieserver1!")
 /system-property=org.kie.server.persistence.ds:add(value="java:jboss/datasources/KieServerDS")
 /system-property=org.kie.server.persistence.dialect:add(value="org.hibernate.dialect.PostgreSQLDialect")
+/system-property=org.kie.server.bypass.auth.user:add(value="true")
 #/system-property=org.kie.server.persistence.tm:add(value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform");
 /system-property=org.kie.server.id:add(value="cc-application-kie-server")
 run-batch
