@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var app = angular.module("creditCardApplicationApp", ["ngRoute"]);
+var app = angular.module("creditCardApplicationApp", ["ngRoute", "ui.bootstrap"]);
 
 // Configure application routing
 app.config(function($routeProvider) {
@@ -56,7 +56,7 @@ app.config(function($routeProvider) {
             var selectedCard;
             var currentProcessInstance;
             var currentTask;
-            
+
             return {
                 getSelectedCard: function() {
                     return selectedCard;
