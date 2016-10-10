@@ -29,7 +29,10 @@
     <div class="container-fluid container-cards-pf">
         <div class="row row-cards-pf">
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="card-pf card-pf-view card-pf-view-select card-pf-view-single-select" ng-href="#/eap" id="rhexpress">
+              <!--
+              <div ng-class="{'card-pf card-pf-view card-pf-view-select card-pf-view-single-select active': selectedCard === 'rhexpress', 'card-pf card-pf-view card-pf-view-select card-pf-view-single-select': selectedCard !== 'rhexpress'}" ng-click="selectCard('rhexpress')">
+              -->
+                <div class="card-pf card-pf-view card-pf-view-select card-pf-view-single-select" ng-class="{'active': selectedCard === 'rhexpress'}" ng-click="selectCard('rhexpress')">
                     <div class="card-pf-body">
                         <div class="card-pf-top-element">
                             <span class="fa fa-credit-card card-pf-icon-circle"></span>
@@ -45,9 +48,8 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="card-pf card-pf-view card-pf-view-select card-pf-view-single-select" id="signaviocard">
+                <div class="card-pf card-pf-view card-pf-view-select card-pf-view-single-select" ng-class="{'active': selectedCard === 'signaviocard'}" ng-click="selectCard('signaviocard')">
                     <div class="card-pf-body">
                         <div class="card-pf-top-element">
                             <span class="fa fa-credit-card card-pf-icon-circle"></span>
@@ -63,7 +65,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <div class="card-pf card-pf-view card-pf-view-select card-pf-view-single-select" id="asiv">
+                <div class="card-pf card-pf-view card-pf-view-select card-pf-view-single-select" ng-class="{'active': selectedCard === 'avis'}" ng-click="selectCard('avis')">
                     <div class="card-pf-body">
                         <div class="card-pf-top-element">
                             <span class="fa fa-credit-card card-pf-icon-circle"></span>
