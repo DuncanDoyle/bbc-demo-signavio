@@ -1,12 +1,17 @@
 'use strict';
 
 angular.module('creditCardApplicationApp')
-    .controller('applyCtrl', function($scope, $http, $location, util, sharedStateService) {
+    .controller('applicationCtrl', function($scope, $http, $location, util, sharedStateService) {
         $scope.selectedCard = sharedStateService.getSelectedCard();
         //Reset the selected card.
         sharedStateService.setSelectedCard("");
 
         $scope.data = {};
+        //Initialize the booleans in our model.
+        $scope.data.application = {};
+        $scope.data.application.bankruptcies = false;
+        $scope.data.application.defaults = false;
+        $scope.data.application.settlement = false;
 
         $scope.createApplication = function(application) {
             var url = util.getKieServerUrl()
@@ -18,21 +23,22 @@ angular.module('creditCardApplicationApp')
 
             //JSON representation of the request. CreditCard type still needs to be bound to the model.
             var applicationVar = {
-                name : application.name,
-                //dateOfBirth : application.dateOfBirth,
-                ssn : application.ssn,
-                //income : application.income,
-                //comment : application.comment,
                 input : {
-                  fICO: 1.0,
-                  bankruptcies: "false",
-                  medical: 1.0,
-                  defaults: "true",
-                  rentOrMortgage: 600,
-                  income: 70000,
-                  settlement: "false",
-                  consumerDebt: 10000
-                }
+                  fICO: application.fICO,
+                  bankruptcies: application.bankruptcies,
+                  medical: application.medical,
+                  defaults: application.defaults,
+                  rentOrMortgage: application.rentOrMortgage,
+                  income: application.income,
+                  settlement: application.settlement,
+                  consumerDebt: application.consumerDebt
+                },
+                prospect : {
+                  name: application.name,
+                  email: application.email,
+                  ssn: application.ssn
+                },
+                prospectComment : application.comment
             };
 
             //$http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('creditCardApplicationApp')
-    .controller('taskCtrl', function ($scope, $http, $location, util, sharedStateService) {
+    .controller('offerTaskCtrl', function ($scope, $http, $location, util, sharedStateService) {
 
         $scope.data = {};
 

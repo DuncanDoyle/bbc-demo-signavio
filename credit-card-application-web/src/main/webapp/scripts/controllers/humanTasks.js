@@ -61,7 +61,8 @@ angular.module('creditCardApplicationApp')
 
         $scope.viewHumanTask = function (id) {
             sharedStateService.setCurrentTask(id);
-            $location.path("/task");
+            //TODO: Redirect based on the task type.
+            $location.path("/offerTask");
         }
 
         $scope.getHumanTasks(0);

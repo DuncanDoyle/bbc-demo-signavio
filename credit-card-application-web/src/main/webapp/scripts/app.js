@@ -15,19 +15,19 @@ app.config(function($routeProvider) {
                     controllerAs: 'main'
                 })
                 .when('/apply', {
-                    templateUrl: 'views/apply.html',
-                    controller: 'applyCtrl',
-                    controllerAs: 'apply'
+                    templateUrl: 'views/application.html',
+                    controller: 'applicationCtrl',
+                    controllerAs: 'application'
                 })
                 .when('/humanTasks', {
                     templateUrl: 'views/humanTasks.html',
                     controller: 'humanTasksCtrl',
                     controllerAs: 'humanTasks'
                 })
-                .when('/task', {
-                    templateUrl: 'views/task.html',
-                    controller: 'taskCtrl',
-                    controllerAs: 'task'
+                .when('/offerTask', {
+                    templateUrl: 'views/offerTask.html',
+                    controller: 'offerTaskCtrl',
+                    controllerAs: 'offerTask'
                 })
                 .when('/reviewSilverCard', {
                     templateUrl: 'views/reviewSilverCard.html',
