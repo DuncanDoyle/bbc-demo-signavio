@@ -24,19 +24,24 @@ angular.module('creditCardApplicationApp')
             //JSON representation of the request. CreditCard type still needs to be bound to the model.
             var applicationVar = {
                 input : {
-                  fICO: application.fICO,
-                  bankruptcies: application.bankruptcies,
-                  medical: application.medical,
-                  defaults: application.defaults,
-                  rentOrMortgage: application.rentOrMortgage,
-                  income: application.income,
-                  settlement: application.settlement,
-                  consumerDebt: application.consumerDebt
+                  'defaultpkg.Input' : {
+                    fICO: application.fICO,
+                    bankruptcies: application.bankruptcies,
+                    medical: application.medical,
+                    defaults: application.defaults,
+                    rentOrMortgage: application.rentOrMortgage,
+                    income: application.income,
+                    settlement: application.settlement,
+                    consumerDebt: application.consumerDebt
+                  }
                 },
+                //prospect" : {"signavio.Prospect":{"name":"Duncan Doyle","ssn":"1234","email":"ddoyle@redhat.com"}}
                 prospect : {
-                  name: application.name,
-                  email: application.email,
-                  ssn: application.ssn
+                  'signavio.Prospect' : {
+                    name: application.name,
+                    email: application.email,
+                    ssn: application.ssn
+                  }
                 },
                 prospectComment : application.comment
             };
