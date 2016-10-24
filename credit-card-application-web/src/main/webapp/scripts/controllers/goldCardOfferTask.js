@@ -1,7 +1,22 @@
 'use strict';
 
 angular.module('creditCardApplicationApp')
-    .controller('offerTaskCtrl', function ($scope, $http, $location, util, sharedStateService) {
+    .controller('goldCardOfferTaskCtrl', function ($scope, $http, $location, util, sharedStateService) {
+
+      var createOutputData = function(task) {
+          var outputData = {
+              htCardOffer: {
+                  'signavio.Offer': {
+                      cardType: task['task-input-data']['htCardType'],
+                      comment: task['task-output-data']['htCardOffer']['signavio.Offer']['comment'],
+                      interestRate: task['task-input-data']['htDetermineInterestRateOutput']['defaultpkg.DetermineInterestRate_Output']['cardRate'],
+                      maxCredit: task['task-output-data']['htCardOffer']['signavio.Offer']['maxCredit'],
+                      prospect: task['task-input-data']['htProspect']
+                  }
+              }
+          }
+          return outputData;
+      }
 
         $scope.data = {};
 
@@ -13,7 +28,7 @@ angular.module('creditCardApplicationApp')
                 + id
                 + "?withInputData=true&withOutputData=true&user=bpmsAdmin";
 
-            $http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
+            //$http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
             $http.defaults.headers.common['Accept'] = "application/json";
             $http.get(url)
                 .success(function (data) {
@@ -40,7 +55,7 @@ angular.module('creditCardApplicationApp')
                 comments : task['task-output-data']['comments']
             }
 
-            $http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
+            //$http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
             $http.defaults.headers.common['Accept'] = "application/json";
             $http.defaults.headers.common['Content-type'] = "application/json";
             $http.put(url, outputData)
@@ -68,13 +83,13 @@ angular.module('creditCardApplicationApp')
                 comments : task['task-output-data']['comments']
             }
 
-            $http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
+            //$http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
             $http.defaults.headers.common['Accept'] = "application/json";
             $http.defaults.headers.common['Content-type'] = "application/json";
             $http.put(url, outputData)
                 .success(function (data) {
                     sharedStateService.setCurrentTask((function () {return;})());
-                    $location.path("/myTickets");
+                    $location.path("/humanTasks");
 
                 })
                 .error(function (error) {

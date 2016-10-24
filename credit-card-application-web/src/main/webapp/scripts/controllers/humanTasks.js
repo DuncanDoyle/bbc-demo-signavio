@@ -44,7 +44,7 @@ angular.module('creditCardApplicationApp')
                 + op
                 + "?user=bpmsAdmin";
 
-            $http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
+            //$http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
             $http.defaults.headers.common['Accept'] = "application/json";
             $http.defaults.headers.common['Content-type'] = "application/json";
             $http.put(url)
@@ -59,11 +59,14 @@ angular.module('creditCardApplicationApp')
 
         };
 
-        $scope.viewHumanTask = function (id) {
+        $scope.viewHumanTask = function (id, taskName) {
             sharedStateService.setCurrentTask(id);
             //TODO: Redirect based on the task type.
-            $location.path("/offerTask");
+            //$location.path("/offerTask");
+            $location.path("/task/" + util.getTaskView(taskName));
         }
+
+
 
         $scope.getHumanTasks(0);
 

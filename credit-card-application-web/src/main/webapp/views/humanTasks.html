@@ -34,7 +34,7 @@
                                 <button class="btn btn-default" ng-show="task['task-status'] == 'Reserved'" ng-click="processHumanTask(task['task-id'],'started')">Start</button>
                                 <button class="btn btn-default" ng-show="task['task-status'] == 'Reserved'" ng-click="processHumanTask(task['task-id'],'released')">Release</button>
                                 <button class="btn btn-default" ng-show="task['task-status'] == 'InProgress'" ng-click="processHumanTask(task['task-id'],'released')">Release</button>
-                                <button class="btn btn-default" ng-show="task['task-status'] == 'InProgress'" ng-click="viewHumanTask(task['task-id'])">View</button>
+                                <button class="btn btn-default" ng-show="task['task-status'] == 'InProgress'" ng-click="viewHumanTask(task['task-id'], task['task-name'])">View</button>
 
                             </td>
                         </tr>

@@ -25,7 +25,7 @@ angular.module('creditCardApplicationApp')
             var applicationVar = {
                 input : {
                   'defaultpkg.Input' : {
-                    fICO: application.fICO,
+                    fico: application.fICO,
                     bankruptcies: application.bankruptcies,
                     medical: application.medical,
                     defaults: application.defaults,
@@ -43,7 +43,8 @@ angular.module('creditCardApplicationApp')
                     ssn: application.ssn
                   }
                 },
-                prospectComment : application.comment
+                prospectComment : application.comment,
+                cardType : $scope.selectedCard
             };
 
             //$http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;

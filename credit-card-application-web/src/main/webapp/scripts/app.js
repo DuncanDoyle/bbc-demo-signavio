@@ -24,10 +24,15 @@ app.config(function($routeProvider) {
                     controller: 'humanTasksCtrl',
                     controllerAs: 'humanTasks'
                 })
-                .when('/offerTask', {
-                    templateUrl: 'views/offerTask.html',
-                    controller: 'offerTaskCtrl',
-                    controllerAs: 'offerTask'
+                .when('/task/goldCardOfferTask', {
+                    templateUrl: 'views/goldCardOfferTask.html',
+                    controller: 'goldCardOfferTaskCtrl',
+                    controllerAs: 'goldCardOfferTask'
+                })
+                .when('/task/rejectTask', {
+                    templateUrl: 'views/rejectTask.html',
+                    controller: 'rejectTaskCtrl',
+                    controllerAs: 'rejectTask'
                 })
                 .when('/reviewSilverCard', {
                     templateUrl: 'views/reviewSilverCard.html',
@@ -88,6 +93,22 @@ app.config(function($routeProvider) {
                 },
                 getCreditCardProcess: function() {
                     return ENV.kieserver_processId;
+                },
+                getTaskView: function(taskName) {
+                    var taskView
+                    switch(taskName) {
+                      case "Send Rejection Notification":
+                        taskView = "rejectTask";
+                        break;
+                      case "Develop Wealth (Gold) Card Offer and Card":
+                        taskView = "goldCardOfferTask";
+                        break;
+                      case "Review Retail (Silver) Card Offer and Card":
+                        taskView = "silverCardOfferTask";
+                        break;
+                    }
+                    console.log("Selected view: " + taskView);
+                    return taskView;
                 }
             }
         });
