@@ -23,6 +23,12 @@
 			<version>${version.org.kie}</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-workitems</artifactId>
+			<version>${version.org.kie}</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 	
 </project>

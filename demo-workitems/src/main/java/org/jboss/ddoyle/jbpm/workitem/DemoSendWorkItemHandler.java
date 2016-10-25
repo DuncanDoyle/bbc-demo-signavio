@@ -4,8 +4,13 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 import org.jbpm.process.workitem.AbstractLogOrThrowWorkItemHandler;
+import org.jbpm.process.workitem.email.Connection;
+import org.jbpm.process.workitem.email.Email;
+import org.jbpm.process.workitem.email.Message;
+import org.jbpm.process.workitem.email.Recipient;
+import org.jbpm.process.workitem.email.Recipients;
+import org.jbpm.process.workitem.email.SendHtml;
 import org.kie.api.runtime.process.WorkItem;
-import org.kie.api.runtime.process.WorkItemHandler;
 import org.kie.api.runtime.process.WorkItemManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,9 +28,24 @@ public class DemoSendWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
 
 	private static final String PARAMS_MESSAGE = "Message";
 	
+	private final Connection connection;
+	
+	private final String from = "jbossdemocentral@gmail.com";
+	
 	//TODO: Because we get the type of Message, we could select an actual message processor implementation based on this type.
 	private static final String PARAMS_MESSAGE_TYPE = "MessageType";
 
+	
+	public DemoSendWorkItemHandler() {
+		connection = new Connection();
+		//We could (and should) parameterize these settings.
+		connection.setHost("smtp.gmail.com");
+		connection.setPort("587");
+		connection.setUserName("jbossdemocentral@gmail.com");
+		connection.setPassword("rbantztpqywjyajj");
+		connection.setStartTls(true);
+	}
+	
 	public void executeWorkItem(WorkItem workItem, WorkItemManager workItemManager) {
 		LOGGER.info("Sending message.");
 
@@ -73,18 +93,67 @@ public class DemoSendWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
 		StringBuilder messageBuilder = new StringBuilder("CreditCard application rejected:\n");
 		messageBuilder.append("Prosect: ").append(prospect).append("\n");
 		messageBuilder.append("Rejection: " + rejection);
-		LOGGER.info(messageBuilder.toString());
+		
+		Method getEmail = null;
+		String email = null;
+		try {
+			getEmail = prospect.getClass().getDeclaredMethod("getEmail");
+			email = (String) getEmail.invoke(prospect);
+		} catch (Exception e) {
+			LOGGER.error("Error while retrieving prospect's email address for notification.");
+			handleException(e);
+		}
+		
+		sendEmail(email, "Rejected: Credit Card Application", messageBuilder.toString());
 	}
 	
 	private void handleOffer(Object prospect, Object offer) {
 		StringBuilder messageBuilder = new StringBuilder("CreditCard application accepted:\n");
 		messageBuilder.append("Prosect: ").append(prospect).append("\n");
 		messageBuilder.append("Offer: " + offer);
-		LOGGER.info(messageBuilder.toString());
+		
+		Method getEmail = null;
+		String email = null;
+		try {
+			getEmail = prospect.getClass().getDeclaredMethod("getEmail");
+			email = (String) getEmail.invoke(prospect);
+		} catch (Exception e) {
+			LOGGER.error("Error while retrieving prospect's email address for notification.");
+			handleException(e);
+		}
+		
+		sendEmail(email, "Offer: Credit Card Application", messageBuilder.toString());
 	}
 
 	public void abortWorkItem(WorkItem arg0, WorkItemManager arg1) {
 		throw new UnsupportedOperationException("This workitem cannot be aborted.");
+	}
+	
+	/**
+	 * Sends the message as an e-mail. Re-uses functionality from the jBPM e-mail wih.
+	 * @param message
+	 */
+	private void sendEmail(String to, String subject, String body) {
+		Email email = new Email();
+		email.setConnection(this.connection);
+		
+		Message message = new Message();
+		
+		//message.setTo(to);
+		Recipients recipients = new Recipients();
+		
+		Recipient toRecipient = new Recipient();
+		toRecipient.setType("To");
+		toRecipient.setEmail(to);
+		recipients.addRecipient(toRecipient);
+		
+		message.setRecipients(recipients);
+		message.setSubject(subject);
+		message.setBody(body);
+		
+		email.setMessage(message);
+		
+		SendHtml.sendHtml(email);
 	}
 
 }
