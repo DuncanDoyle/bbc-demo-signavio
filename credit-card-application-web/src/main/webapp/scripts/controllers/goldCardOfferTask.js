@@ -3,9 +3,9 @@
 angular.module('creditCardApplicationApp')
     .controller('goldCardOfferTaskCtrl', function ($scope, $http, $location, util, sharedStateService) {
 
-      var createOutputData = function(task) {
-          var outputData = {
-              htCardOffer: {
+        var createOutputData = function(task) {
+            var outputData = {
+                htCardOffer: {
                   'signavio.Offer': {
                       cardType: task['task-input-data']['htCardType'],
                       comment: task['task-output-data']['htCardOffer']['signavio.Offer']['comment'],
@@ -16,7 +16,7 @@ angular.module('creditCardApplicationApp')
               }
           }
           return outputData;
-      }
+        }
 
         $scope.data = {};
 
@@ -51,14 +51,10 @@ angular.module('creditCardApplicationApp')
                 + "/contents/output"
                 + "?user=bpmsAdmin";
 
-            var outputData = {
-                comments : task['task-output-data']['comments']
-            }
-
             //$http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
             $http.defaults.headers.common['Accept'] = "application/json";
             $http.defaults.headers.common['Content-type'] = "application/json";
-            $http.put(url, outputData)
+            $http.put(url, createOutputData(task))
                 .success(function (data) {
 
                 })
@@ -79,14 +75,10 @@ angular.module('creditCardApplicationApp')
                 + "/states/completed"
                 + "?user=bpmsAdmin";
 
-            var outputData = {
-                comments : task['task-output-data']['comments']
-            }
-
             //$http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
             $http.defaults.headers.common['Accept'] = "application/json";
             $http.defaults.headers.common['Content-type'] = "application/json";
-            $http.put(url, outputData)
+            $http.put(url, createOutputData(task))
                 .success(function (data) {
                     sharedStateService.setCurrentTask((function () {return;})());
                     $location.path("/humanTasks");

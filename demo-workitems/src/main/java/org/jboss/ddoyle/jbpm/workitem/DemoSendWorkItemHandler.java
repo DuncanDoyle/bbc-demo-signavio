@@ -30,7 +30,7 @@ public class DemoSendWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
 	
 	private final Connection connection;
 	
-	private final String from = "jbossdemocentral@gmail.com";
+	private static final String FROM_ADDRESS = "jbossdemocentral@gmail.com";
 	
 	//TODO: Because we get the type of Message, we could select an actual message processor implementation based on this type.
 	private static final String PARAMS_MESSAGE_TYPE = "MessageType";
@@ -138,8 +138,8 @@ public class DemoSendWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
 		email.setConnection(this.connection);
 		
 		Message message = new Message();
+		message.setFrom(FROM_ADDRESS);
 		
-		//message.setTo(to);
 		Recipients recipients = new Recipients();
 		
 		Recipient toRecipient = new Recipient();
