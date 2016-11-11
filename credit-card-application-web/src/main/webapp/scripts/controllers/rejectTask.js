@@ -8,10 +8,9 @@ angular.module('creditCardApplicationApp')
                 htRejection: {
                     'signavio.Rejection': {
                         reason: task['task-output-data']['htRejection']['signavio.Rejection']['reason'],
-                        prospect: task['task-output-data']['prospect']
+                        prospect: task['task-input-data']['htProspect']
                     }
-                },
-                htCardType: task['task-input-data']['htCardType']
+                }
             }
             return outputData;
         }

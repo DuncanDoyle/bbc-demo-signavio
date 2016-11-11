@@ -69,16 +69,15 @@ public class DemoSendWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
 				} else {
 					LOGGER.error("Unable to send message. Unknown message type.");
 				}
-				
-
+			
 			} catch (Exception e) {
-				LOGGER.error("Error while retrieving message data.");
-				handleException(e);
+				LOGGER.error("Error sending message.", e);
+				//handleException(e);
 			}
 		} else {
 			String errorMessage = "We don't have a message. Not sending a message is evil and should never happen, so we throw an exception.";
 			LOGGER.error(errorMessage);
-			throw new IllegalArgumentException(errorMessage);
+			//throw new IllegalArgumentException(errorMessage);
 		}
 
 		// Complete the workitem after the message has been sent.
@@ -104,13 +103,16 @@ public class DemoSendWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
 			handleException(e);
 		}
 		
+		String message = messageBuilder.toString();
+		LOGGER.info("Sending message: " + message);
+		
 		sendEmail(email, "Rejected: Credit Card Application", messageBuilder.toString());
 	}
 	
 	private void handleOffer(Object prospect, Object offer) {
 		StringBuilder messageBuilder = new StringBuilder("CreditCard application accepted:\n");
 		messageBuilder.append("Prosect: ").append(prospect).append("\n");
-		messageBuilder.append("Offer: " + offer);
+		messageBuilder.append("Offer: ").append(offer);
 		
 		Method getEmail = null;
 		String email = null;
@@ -122,7 +124,10 @@ public class DemoSendWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
 			handleException(e);
 		}
 		
-		sendEmail(email, "Offer: Credit Card Application", messageBuilder.toString());
+		String message = messageBuilder.toString();
+		LOGGER.info("Sending message: " + message);
+		
+		sendEmail(email, "Offer: Credit Card Application", message);
 	}
 
 	public void abortWorkItem(WorkItem arg0, WorkItemManager arg1) {
