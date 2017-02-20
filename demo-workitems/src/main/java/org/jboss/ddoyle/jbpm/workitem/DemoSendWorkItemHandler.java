@@ -25,8 +25,12 @@ import org.slf4j.LoggerFactory;
 public class DemoSendWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DemoSendWorkItemHandler.class);
+	
+	private static final String SEND_MAIL_PROPERTY_NAME = "com.signavio.demo.sendmail";
 
 	private static final String PARAMS_MESSAGE = "Message";
+	
+	private final boolean sendMail;
 	
 	private final Connection connection;
 	
@@ -44,6 +48,9 @@ public class DemoSendWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
 		connection.setUserName("jbossdemocentral@gmail.com");
 		connection.setPassword("rbantztpqywjyajj");
 		connection.setStartTls(true);
+		
+		//Determine if we're actually going to send a mail.
+		sendMail = Boolean.parseBoolean(System.getProperty(SEND_MAIL_PROPERTY_NAME, "false"));
 	}
 	
 	public void executeWorkItem(WorkItem workItem, WorkItemManager workItemManager) {

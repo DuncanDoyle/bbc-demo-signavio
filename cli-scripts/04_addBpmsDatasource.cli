@@ -5,5 +5,6 @@ batch
 /subsystem=datasources/xa-data-source=ExampleDS/xa-datasource-properties=ServerName:add(value=localhost)
 /subsystem=datasources/xa-data-source=ExampleDS/xa-datasource-properties=PortNumber:add(value=5432)
 /subsystem=datasources/xa-data-source=ExampleDS/xa-datasource-properties=DatabaseName:add(value=bpmsuite-bbc)
-/subsystem=datasources/xa-data-source=ExampleDS:enable(persistent=true)
+#/subsystem=datasources/xa-data-source=ExampleDS:enable(persistent=true)
+/subsystem=datasources/xa-data-source=ExampleDS:enable
 run-batch
