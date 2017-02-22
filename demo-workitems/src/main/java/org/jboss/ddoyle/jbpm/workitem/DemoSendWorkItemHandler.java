@@ -60,6 +60,7 @@ public class DemoSendWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
 		// We expect only a message. The problem is that the message type, atm, is defined in the process project, so we need to do some
 		// reflection magic here.
 		Object message = params.get(PARAMS_MESSAGE);
+		
 		if (message != null) {
 			try {
 				Method getProspectMethod = message.getClass().getDeclaredMethod("getProspect");
@@ -112,8 +113,9 @@ public class DemoSendWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
 		
 		String message = messageBuilder.toString();
 		LOGGER.info("Sending message: " + message);
-		
-		sendEmail(email, "Rejected: Credit Card Application", messageBuilder.toString());
+		if (sendMail) {
+			sendEmail(email, "Rejected: Credit Card Application", messageBuilder.toString());
+		}
 	}
 	
 	private void handleOffer(Object prospect, Object offer) {
@@ -133,8 +135,9 @@ public class DemoSendWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
 		
 		String message = messageBuilder.toString();
 		LOGGER.info("Sending message: " + message);
-		
-		sendEmail(email, "Offer: Credit Card Application", message);
+		if (sendMail) { 
+			sendEmail(email, "Offer: Credit Card Application", message);
+		}
 	}
 
 	public void abortWorkItem(WorkItem arg0, WorkItemManager arg1) {
