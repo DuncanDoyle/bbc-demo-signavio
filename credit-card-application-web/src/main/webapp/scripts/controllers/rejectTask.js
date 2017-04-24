@@ -26,6 +26,8 @@ angular.module('creditCardApplicationApp')
                 "?withInputData=true&withOutputData=true&user=bpmsAdmin";
 
             //$http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
+            //Base64 encoded username and password for Basic Authentication.
+            $http.defaults.headers.common.Authorization = 'Basic a2llc2VydmVyOmtpZXNlcnZlcjEh';
             $http.defaults.headers.common['Accept'] = "application/json";
             $http.get(url)
                 .success(function(data) {
@@ -51,6 +53,8 @@ angular.module('creditCardApplicationApp')
 
 
             //$http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
+            //Base64 encoded username and password for Basic Authentication.
+            $http.defaults.headers.common.Authorization = 'Basic a2llc2VydmVyOmtpZXNlcnZlcjEh';
             $http.defaults.headers.common['Accept'] = "application/json";
             $http.defaults.headers.common['Content-type'] = "application/json";
             $http.put(url, createOutputData(task))
@@ -75,7 +79,9 @@ angular.module('creditCardApplicationApp')
                 "/states/completed" +
                 "?user=bpmsAdmin";
 
-            $http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
+            //$http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
+            //Base64 encoded username and password for Basic Authentication.
+            $http.defaults.headers.common.Authorization = 'Basic a2llc2VydmVyOmtpZXNlcnZlcjEh';
             $http.defaults.headers.common['Accept'] = "application/json";
             $http.defaults.headers.common['Content-type'] = "application/json";
             $http.put(url, createOutputData(task))

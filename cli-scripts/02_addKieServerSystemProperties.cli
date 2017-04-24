@@ -7,12 +7,12 @@ batch
 /system-property=org.kie.server.user:add(value="kieserver")
 /system-property=org.kie.server.pwd:add(value="kieserver1!")
 /system-property=org.kie.server.location:add(value="http://localhost:8080/kie-server/services/rest/server")
-/system-property=org.kie.server.controller:add(value="http://localhost:8080/business-central/rest/controller")
+/system-property=org.kie.server.controller:add(value="http://localhost:8080/jbpm-console/rest/controller")
 /system-property=org.kie.server.controller.user:add(value="kieserver")
 /system-property=org.kie.server.controller.pwd:add(value="kieserver1!")
 # In version 6.4, we should be able to point both Business-Central and KIE-Server to the same DB.
 #/system-property=org.kie.server.persistence.ds:add(value="java:jboss/datasources/KieServerDS")
-/system-property=org.kie.server.persistence.ds:add(value="java:jboss/datasources/ExampleDS")
+/system-property=org.kie.server.persistence.ds:add(value="java:jboss/datasources/jbpmDS")
 /system-property=org.kie.server.persistence.dialect:add(value="org.hibernate.dialect.PostgreSQLDialect")
 /system-property=org.kie.server.bypass.auth.user:add(value="true")
 #/system-property=org.kie.server.persistence.tm:add(value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform");

@@ -11,6 +11,6 @@ var ENV = {
     //'rhsso_secret' : '52e53e25-884f-42d0-9c95-b3289bf3aa7e',
     'kieserver_host' : '127.0.0.1',
     'kieserver_port' : '8080',
-    'kieserver_containerId' : 'signavio:demobbc:1.0',
+    'kieserver_containerId' : 'signavio',
     'kieserver_processId' : 'creditprocess'
 };

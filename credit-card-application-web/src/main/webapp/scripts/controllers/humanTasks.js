@@ -20,7 +20,9 @@ angular.module('creditCardApplicationApp')
                 + "?page=" + page
                 + "&user=bpmsAdmin";
 
-            $http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
+            //$http.defaults.headers.common.Authorization = 'Bearer ' + $scope.token;
+            //Base64 encoded username and password for Basic Authentication.
+            $http.defaults.headers.common.Authorization = 'Basic a2llc2VydmVyOmtpZXNlcnZlcjEh';
             $http.defaults.headers.common['Accept'] = "application/json";
             $http.get(url)
                 .success(function (data) {
